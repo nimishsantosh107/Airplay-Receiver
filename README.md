@@ -34,7 +34,7 @@ cd RPiPlay
 # Building on desktop Linux:
 
 For building on Ubuntu 18.04 or 20.04, follow these steps:  
-**Note: * *GCC 5 or later is required.   
+**Note:** GCC 5 or later is required.   
 ```bash
 sudo apt-get install cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev \
     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-libav \
@@ -47,7 +47,7 @@ make
 
 # Usage
 
-**Note: ** The -b, -r, -l, and -a options are not supported with the gstreamer renderer.  
+**Note:** The -b, -r, -l, and -a options are not supported with the gstreamer renderer.  
 
 Start the rpiplay executable and an AirPlay mirror target device will appear in the network.
 At the moment, these options are implemented:
