@@ -1,12 +1,11 @@
 # Introduction
 
-An open-source implementation of an AirPlay mirroring server for the Raspberry Pi.
-The goal is to make it run smoothly even on a Raspberry Pi Zero.
+An open-source implementation of an AirPlay mirroring server for Linux. The goal is to make it run smoothly.
 
 
 # State
 
-Screen mirroring and audio works for iOS 9 or newer. Recent macOS versions also seem to be compatible. The GPU is used for decoding the h264 video stream. The Pi has no hardware acceleration for audio (AirPlay mirroring uses AAC), so the FDK-AAC decoder is used for that.
+Screen mirroring and audio works for iOS 9 or newer. Recent macOS versions (tested 10.14 Mojave) also seem to be compatible. The GPU is used for decoding the h264 video stream. The Pi has no hardware acceleration for audio (AirPlay mirroring uses AAC), so the FDK-AAC decoder is used for that.
 
 Both audio and video work fine on a Raspberry Pi 3B+ and a Raspberry Pi Zero, though playback is a bit smoother on the 3B+.
 
@@ -26,39 +25,16 @@ For rough details, refer to the (mostly obsolete) [inofficial AirPlay specificat
 
 
 
-# Building
-
-The following packages are required for building on Raspbian:
-
-* **cmake** (for the build system)
-* **libavahi-compat-libdnssd-dev** (for the bonjour registration)
-* **libplist-dev** (for plist handling)
-* **libssl-dev** (for crypto primitives)
-* **ilclient** and Broadcom's OpenMAX stack as present in `/opt/vc` in Raspbian.
-
 For downloading the code, use these commands:
 ```bash
 git clone https://github.com/FD-/RPiPlay.git
 cd RPiPlay
 ```
 
-For building on a fresh Raspbian Stretch or Buster install, these steps should be run:
-```bash
-sudo apt-get install cmake
-sudo apt-get install libavahi-compat-libdnssd-dev
-sudo apt-get install libplist-dev
-sudo apt-get install libssl-dev
-mkdir build
-cd build
-cmake ..
-make
-```
-
-GCC 5 or later is required.
-
 # Building on desktop Linux:
 
 For building on Ubuntu 18.04 or 20.04, follow these steps:
+**Note: **GCC 5 or later is required. 
 ```bash
 sudo apt-get install cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev \
     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-libav \
@@ -69,9 +45,9 @@ cmake ..
 make
 ```
 
-Note: The -b, -r, -l, and -a options are not supported with the gstreamer renderer.
-
 # Usage
+
+**Note: **The -b, -r, -l, and -a options are not supported with the gstreamer renderer.
 
 Start the rpiplay executable and an AirPlay mirror target device will appear in the network.
 At the moment, these options are implemented:
@@ -118,13 +94,6 @@ The code in this repository accumulated from various sources over time. Here is 
 * **Team XBMC**: Managed to show a black background for OpenMAX video rendering. This code is used in the video renderer. License: GNU GPL
 * **Orson Peters and contributors**: An implementation of [Ed25519](https://github.com/orlp/ed25519) signatures. Located in `lib/ed25519`, License: ZLIB; Depends on LibTomCrypt, License: Public Domain
 * **Alex Izvorski and contributors**: Wrote [h264bitstream](https://github.com/aizvorski/h264bitstream), a library for manipulation h264 streams. Used for reducing delay in the Raspberry Pi video pipeline. Located in the `renderers/h264-bitstream` folder. License: GNU LGPLv2.1
-
-
-# Contributing
-
-I'm afraid I won't have time to regularly maintain this project. Instead, I'm hoping this project can be improved in a community effort. I'll fix and add as much as I need for personal use, and I count on you to do the same!
-
-Your contributions are more than welcome!
 
 
 # Todo
