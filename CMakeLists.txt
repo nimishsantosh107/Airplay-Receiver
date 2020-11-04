@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-project(rpiplay)
+project(airplay-server)
 
 set (CMAKE_CXX_STANDARD 11)
 
@@ -16,7 +16,7 @@ add_subdirectory(renderers)
 # Make sure the main executable is aware of the available renderers
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${RENDERER_FLAGS}" )
 
-add_executable( rpiplay rpiplay.cpp)
-target_link_libraries ( rpiplay renderers airplay )
+add_executable( airplay-server airplay-server.cpp)
+target_link_libraries ( airplay-server renderers airplay )
 
-install(PROGRAMS rpiplay DESTINATION bin)
+install(PROGRAMS airplay-server DESTINATION bin)
